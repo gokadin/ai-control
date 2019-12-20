@@ -11,6 +11,10 @@ mat-drawer-container {
   mat-drawer {
     width: 250px;
   }
+
+  mat-drawer-content {
+    padding: 15px;
+  }
 }
 
 mat-sidenav-container {

@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  ai-redis:
+    image: redis
+    container_name: ai-redis
+    ports:
+      - '6379:6379'

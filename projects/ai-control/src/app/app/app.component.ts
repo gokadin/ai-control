@@ -6,8 +6,6 @@ import { Observable } from 'rxjs';
 import { environment as env } from '../../environments/environment';
 
 import {
-  authLogin,
-  authLogout,
   routeAnimations,
   AppState,
   LocalStorageService,
@@ -16,12 +14,7 @@ import {
   selectSettingsLanguage,
   selectEffectiveTheme
 } from '../core/core.module';
-import {
-  actionSettingsChangeAnimationsPageDisabled,
-  actionSettingsChangeLanguage
-} from '../core/settings/settings.actions';
-import { MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
+import { actionSettingsChangeAnimationsPageDisabled } from '../core/settings/settings.actions';
 
 @Component({
   selector: 'anms-root',
@@ -30,11 +23,8 @@ import { DomSanitizer } from '@angular/platform-browser';
   animations: [routeAnimations]
 })
 export class AppComponent implements OnInit {
-  isProd = env.production;
-  envName = env.envName;
   version = env.versions.app;
   year = new Date().getFullYear();
-  logo = require('../../assets/logo.png');
 
   isAuthenticated$: Observable<boolean>;
   stickyHeader$: Observable<boolean>;
@@ -64,17 +54,5 @@ export class AppComponent implements OnInit {
     this.stickyHeader$ = this.store.pipe(select(selectSettingsStickyHeader));
     this.language$ = this.store.pipe(select(selectSettingsLanguage));
     this.theme$ = this.store.pipe(select(selectEffectiveTheme));
-  }
-
-  onLoginClick() {
-    this.store.dispatch(authLogin());
-  }
-
-  onLogoutClick() {
-    this.store.dispatch(authLogout());
-  }
-
-  onLanguageSelect({ value: language }) {
-    this.store.dispatch(actionSettingsChangeLanguage({ language }));
   }
 }

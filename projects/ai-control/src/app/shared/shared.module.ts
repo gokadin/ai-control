@@ -94,7 +94,6 @@ library.add(
 import { BigInputComponent } from './big-input/big-input/big-input.component';
 import { BigInputActionComponent } from './big-input/big-input-action/big-input-action.component';
 import { RtlSupportDirective } from './rtl-support/rtl-support.directive';
-import { DrawerComponent } from '../drawer/drawer.component';
 
 @NgModule({
   imports: [
@@ -126,8 +125,7 @@ import { DrawerComponent } from '../drawer/drawer.component';
   declarations: [
     BigInputComponent,
     BigInputActionComponent,
-    RtlSupportDirective,
-    DrawerComponent
+    RtlSupportDirective
   ],
   exports: [
     CommonModule,
@@ -161,8 +159,7 @@ import { DrawerComponent } from '../drawer/drawer.component';
 
     BigInputComponent,
     BigInputActionComponent,
-    RtlSupportDirective,
-    DrawerComponent
+    RtlSupportDirective
   ]
 })
 export class SharedModule {}
