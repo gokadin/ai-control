@@ -1,4 +1,15 @@
-import { ProjectState } from './project.model';
+import { createSelector } from '@ngrx/store';
+import { selectMainState } from '../mainState';
+import { projectAdapter } from './project.reducer';
 
-export const selectProjectIds = (state: ProjectState) => state.ids;
-export const selectProjectEntities = (state: ProjectState) => state.entities;
+const { selectAll } = projectAdapter.getSelectors();
+
+export const selectProjectState = createSelector(
+  selectMainState,
+  state => state.project
+);
+
+export const selectProjects = createSelector(
+  selectProjectState,
+  selectAll
+);

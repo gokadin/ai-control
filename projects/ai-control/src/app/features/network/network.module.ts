@@ -12,8 +12,14 @@ import { environment } from '../../../environments/environment';
 import { NetworkRoutingModule } from './network-routing.module';
 import { ProjectEffects } from './project/project.effects';
 import { ProjectComponent } from './project/components/project.component';
-import { FEATURE_NAME, reducers } from './network.state';
+import { FEATURE_NAME, reducers } from './mainState';
 import { MatTableModule } from '@angular/material/table';
+import { ProjectService } from './project/project.service';
+import { NewProjectDialog } from './project/components/newProjectDialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { PlatformComponent } from './platform/components/platform.component';
+import { PlatformService } from './platform/platform.service';
+import { PlatformEffects } from './platform/platform.effects';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(
@@ -38,11 +44,13 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
       isolate: true
     }),
-    EffectsModule.forFeature([ProjectEffects]),
-    MatTableModule
+    EffectsModule.forFeature([ProjectEffects, PlatformEffects]),
+    MatTableModule,
+    MatDialogModule
   ],
-  declarations: [ProjectComponent],
-  providers: []
+  declarations: [ProjectComponent, NewProjectDialog, PlatformComponent],
+  entryComponents: [NewProjectDialog],
+  providers: [ProjectService, PlatformService]
 })
 export class NetworkModule {
   constructor() {}

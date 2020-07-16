@@ -25,8 +25,8 @@ import { actionSettingsChangeAnimationsPageDisabled } from '../core/settings/set
 export class AppComponent implements OnInit {
   version = env.versions.app;
   year = new Date().getFullYear();
-
   isAuthenticated$: Observable<boolean>;
+  logo = require('../../assets/icon.svg');
   stickyHeader$: Observable<boolean>;
   language$: Observable<string>;
   theme$: Observable<string>;

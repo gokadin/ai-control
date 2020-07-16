@@ -4,17 +4,17 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'network',
+    redirectTo: 'projects',
     pathMatch: 'full'
   },
   {
-    path: 'network',
+    path: 'projects',
     loadChildren: () =>
       import('./features/network/network.module').then(m => m.NetworkModule)
   },
   {
     path: '**',
-    redirectTo: 'network'
+    redirectTo: 'projects'
   }
 ];
 
@@ -22,7 +22,7 @@ const routes: Routes = [
   // useHash supports github.io demo page, remove in your app
   imports: [
     RouterModule.forRoot(routes, {
-      useHash: true,
+      useHash: false,
       scrollPositionRestoration: 'enabled',
       preloadingStrategy: PreloadAllModules
     })
